@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap');
+
+:root {
+    --bg-color: #0b1c2b; 
+    --game-bg: #223040;
+    --char-color: #f1c40f;
+    --monster-color: #e74c3c;
+    --hp-color: #2ecc71;
+    --xp-color: #3498db;
+    --game-size: 500px;
+    --accent-color: #f1c40f; /* 노란색 계열 강조 색상 */
+}
+
+body {
+    margin: 0;
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #ecf0f1;
+}
+
+.game-container {
+    background: #1c2833;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: var(--game-size);
+    width: 90%;
+    position: relative; 
+    z-index: 10; 
+}
+
+h1 {
+    color: var(--char-color);
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.score-panel {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 2px solid #5d6d7e;
+}
+
+.stat-box {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: #0b1c2b;
+    border-radius: 5px;
+}
+
+/* 상세 스탯 패널 스타일 (한 줄 배치) */
+.detailed-stats-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 5px; 
+    padding: 8px 0;
+    margin-bottom: 10px;
+    background: #111122;
+    border-radius: 5px;
+    font-size: 0.8em; 
+}
+.detailed-stat {
+    padding: 3px 8px;
+    color: var(--char-color);
+    border: 1px solid #3d5a7d;
+    border-radius: 3px;
+    background-color: #0b1c2b;
+}
+
+.game-area {
+    position: relative;
+    width: 100%;
+    height: var(--game-size);
+    background-color: var(--game-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid #5d6d7e;
+}
+
+.status-bars {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 0.8em;
+    z-index: 10;
+    text-align: left;
+}
+
+progress {
+    width: 150px;
+    height: 10px;
+    margin-left: 5px;
+}
+#hp-bar::-webkit-progress-bar { background-color: #c0392b; }
+#hp-bar::-webkit-progress-value { background-color: var(--hp-color); }
+#xp-bar::-webkit-progress-bar { background-color: #2c3e50; }
+#xp-bar::-webkit-progress-value { background-color: var(--xp-color); }
+
+
+.character {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    background-color: var(--char-color);
+    border-radius: 50%;
+    user-select: none;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--char-color); 
+}
+
+/* 갑옷 스타일 추가 */
+.character.armored {
+    background-color: #bdc3c7; /* 은색/갑옷 색상 */
+    color: #1c2833;
+    box-shadow: 0 0 15px #bdc3c7;
+    border: 3px solid #34495e;
+}
+
+.monster {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: var(--monster-color);
+    border-radius: 50%;
+    user-select: none;
+    text-align: center;
+    line-height: 25px;
+    font-size: 15px;
+    z-index: 4;
+}
+
+.projectile {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 6;
+}
+
+.item {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--hp-color); 
+    border-radius: 5px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    color: white;
+    box-shadow: 0 0 10px var(--hp-color);
+    z-index: 3;
+    user-select: none;
+}
+
+.item.coin {
+    background-color: var(--char-color);
+    border-radius: 50%;
+    text-shadow: 0 0 5px orange;
+    box-shadow: 0 0 10px var(--char-color);
+    font-size: 12px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.action-button.start { background-color: var(--hp-color); }
+.action-button.stop { background-color: var(--monster-color); }
+/* 상점 버튼 노란색으로 변경 */
+.action-button.reset { background-color: var(--accent-color); color: var(--bg-color);} 
+
+/* 오버레이 */
+.overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; 
+}
+
+.skill-card-container, .gameover-content {
+    background: #2c3e50;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px; 
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+#skill-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.skill-card {
+    background: #1c2833;
+    padding: 15px;
+    border-radius: 5px;
+    width: 30%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+.skill-card:hover {
+    border-color: var(--char-color);
+}
+.skill-card h3 { color: var(--xp-color); margin-top: 0; }
+
+/* 상점 스타일 */
+.upgrade-shop {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1c2833;
+    border-radius: 8px;
+    border: 1px solid #5d6d7e;
+}
+.upgrade-shop h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+    border-bottom: 1px dashed #5d6d7e;
+    padding-bottom: 10px;
+}
+#shop-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.shop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: #2c3e50;
+    border-radius: 5px;
+}
+.shop-item button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.shop-item button:disabled {
+    background-color: #7f8c8d;
+    cursor: default;
+}
+.current-coin {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--char-color);
+    margin-bottom: 10px;
+}

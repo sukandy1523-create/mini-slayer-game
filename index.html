@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니 슬레이어</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="overlay" id="skill-overlay">
+        <div class="skill-card-container">
+            <h2>✨ 스킬 선택 ✨</h2>
+            <div id="skill-options">
+                </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="chapter-clear-overlay"> 
+        <div class="gameover-content">
+            <h2 id="chapter-clear-message"></h2>
+            <p>몬스터들이 잠시 후퇴했습니다! 다음 챕터로 이동하여 더 강력한 도전을 시작하세요.</p>
+            <button id="next-chapter-button" class="action-button start">다음 챕터로 이동 (계속)</button> 
+        </div>
+    </div>
+    
+    <div class="overlay" id="gameover-overlay"> 
+        <div class="gameover-content">
+            <h2 id="final-message">게임 오버!</h2>
+            <p id="final-score"></p>
+            <p class="current-coin">총 코인: <span id="current-coin-display">0</span></p>
+
+            <div class="upgrade-shop">
+                <h3>🛡️ 영구 업그레이드 상점</h3>
+                <div id="shop-options">
+                    </div>
+            </div>
+
+            <button id="restart-button" class="action-button start">다시 시작</button> 
+        </div>
+    </div>
+    <div class="game-container">
+        <h1>미니 슬레이어</h1>
+        
+        <div class="score-panel">
+            <span id="score-display" class="stat-box">킬 수: 0 / 50</span>
+            <span id="coin-display" class="stat-box">💰 0</span>
+            <span id="weapon-display" class="stat-box">무기: 🏹</span>
+            <span id="level-display" class="stat-box">Lv. 1</span>
+            <span id="chapter-display" class="stat-box">챕터: 1</span>
+            <span id="wave-display" class="stat-box">웨이브: 1</span>
+        </div>
+
+        <div class="detailed-stats-panel">
+            <span id="stat-hp" class="detailed-stat">HP: 100/100</span>
+            <span id="stat-dmg" class="detailed-stat">DMG: 10 (1.0x)</span>
+            <span id="stat-speed" class="detailed-stat">SPD: 3.0</span>
+            <span id="stat-att-spd" class="detailed-stat">ATT SPD: 0.83s</span>
+            <span id="stat-magnet" class="detailed-stat">MAG: 50</span>
+            <span id="stat-proj-speed" class="detailed-stat">PROJ: 5.0</span> </div>
+
+        <div class="game-area" id="game-area">
+            <div class="status-bars">
+                HP: <progress id="hp-bar" value="100" max="100"></progress>
+                XP: <progress id="xp-bar" value="0" max="100"></progress>
+            </div>
+
+            <div class="character" id="character">🗡️</div> 
+        </div>
+
+        <div class="control-buttons">
+            <button id="start-button" class="action-button start">시작</button>
+            <button id="stop-button" class="action-button stop" disabled>정지</button>
+            <button id="shop-button" class="action-button reset">상점</button> 
+        </div>
+        
+    </div> <script src="script.js"></script>
+</body>
+</html>
