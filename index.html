@@ -9,11 +9,39 @@
 </head>
 <body>
     
+    <div class="overlay" id="login-overlay">
+        <div class="gameover-content">
+            <h2>👤 미니 슬레이어 로그인</h2>
+            <p id="login-status-message">로그인 또는 회원가입을 해주세요.</p> 
+            
+            <input type="text" id="username-input" placeholder="사용자 ID" maxlength="15">
+            <input type="password" id="password-input" placeholder="비밀번호" maxlength="20" style="margin-top: 10px;">
+            
+            <div class="login-button-group">
+                <button id="login-button" class="action-button start">로그인</button>
+                <button id="register-button" class="action-button register">회원가입</button> 
+            </div>
+        </div>
+    </div>
+    
     <div class="overlay" id="skill-overlay">
         <div class="skill-card-container">
             <h2>✨ 스킬 선택 ✨</h2>
             <div id="skill-options">
                 </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="cheat-overlay">
+        <div class="gameover-content">
+            <h2>⚙️ 개발자 치트 메뉴</h2>
+            <div id="cheat-options">
+                <button id="cheat-level-up" class="action-button start">레벨 즉시 업</button>
+                <button id="cheat-max-coins" class="action-button start">코인 10000 획득</button>
+                <button id="cheat-toggle-invincible" class="action-button stop">무적 모드 (OFF)</button>
+                <button id="cheat-win-chapter" class="action-button start">챕터 즉시 클리어</button>
+            </div>
+            <button id="cheat-close-button" class="action-button reset" style="margin-top: 20px;">닫기</button>
         </div>
     </div>
 
@@ -40,6 +68,7 @@
             <button id="restart-button" class="action-button start">다시 시작</button> 
         </div>
     </div>
+    
     <div class="game-container">
         <h1>미니 슬레이어</h1>
         
@@ -58,23 +87,31 @@
             <span id="stat-speed" class="detailed-stat">SPD: 3.0</span>
             <span id="stat-att-spd" class="detailed-stat">ATT SPD: 0.83s</span>
             <span id="stat-magnet" class="detailed-stat">MAG: 50</span>
-            <span id="stat-proj-speed" class="detailed-stat">PROJ: 5.0</span> </div>
+            <span id="stat-proj-speed" class="detailed-stat">PROJ: 5.0</span> 
+        </div>
+        
+        <div class="status-bars" style="text-align: left; position: relative; padding: 0 0 10px 10px;"> 
+            <span id="player-name-display" style="font-weight: bold; color: var(--accent-color);">[로그인 필요]</span><br>
+            HP: <progress id="hp-bar" value="100" max="100"></progress>
+            XP: <progress id="xp-bar" value="0" max="100"></progress>
+        </div>
+
 
         <div class="game-area" id="game-area">
-            <div class="status-bars">
-                HP: <progress id="hp-bar" value="100" max="100"></progress>
-                XP: <progress id="xp-bar" value="0" max="100"></progress>
-            </div>
-
             <div class="character" id="character">🗡️</div> 
         </div>
 
         <div class="control-buttons">
-            <button id="start-button" class="action-button start">시작</button>
+            <button id="start-button" class="action-button start" disabled>시작</button>
             <button id="stop-button" class="action-button stop" disabled>정지</button>
-            <button id="shop-button" class="action-button reset">상점</button> 
+            <button id="shop-button" class="action-button reset" disabled>상점</button> 
+            <button id="logout-button" class="action-button stop" disabled>로그아웃</button>
+            <button id="cheat-button" class="action-button start" style="background-color: #e67e22;">치트</button> 
         </div>
         
-    </div> <script src="script.js"></script>
+    </div> 
+    <script src="config.js"></script>
+    <script src="login.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
